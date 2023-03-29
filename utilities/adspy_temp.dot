@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="OverTime_No <= 0.5\nsamples = 1176\nvalue = [982, 194]\nclass = 0", fillcolor="#ea9a60"] ;
+1 [label="JobLevel <= 1.5\nsamples = 334\nvalue = [228, 106]\nclass = 0", fillcolor="#f1bc95"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="StockOptionLevel <= 0.5\nsamples = 127\nvalue = [58, 69]\nclass = 1", fillcolor="#dfeffb"] ;
+1 -> 2 ;
+3 [label="samples = 61\nvalue = [19, 42]\nclass = 1", fillcolor="#93c9f1"] ;
+2 -> 3 ;
+4 [label="samples = 66\nvalue = [39, 27]\nclass = 0", fillcolor="#f7d8c2"] ;
+2 -> 4 ;
+5 [label="StockOptionLevel <= 0.5\nsamples = 207\nvalue = [170, 37]\nclass = 0", fillcolor="#eb9c64"] ;
+1 -> 5 ;
+6 [label="samples = 90\nvalue = [61, 29]\nclass = 0", fillcolor="#f1bd97"] ;
+5 -> 6 ;
+7 [label="samples = 117\nvalue = [109, 8]\nclass = 0", fillcolor="#e78a48"] ;
+5 -> 7 ;
+8 [label="TotalWorkingYears <= 2.5\nsamples = 842\nvalue = [754, 88]\nclass = 0", fillcolor="#e89050"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="JobRole_Research Scientist <= 0.5\nsamples = 70\nvalue = [48, 22]\nclass = 0", fillcolor="#f1bb94"] ;
+8 -> 9 ;
+10 [label="samples = 46\nvalue = [26, 20]\nclass = 0", fillcolor="#f9e2d1"] ;
+9 -> 10 ;
+11 [label="samples = 24\nvalue = [22, 2]\nclass = 0", fillcolor="#e78c4b"] ;
+9 -> 11 ;
+12 [label="EnvironmentSatisfaction <= 1.5\nsamples = 772\nvalue = [706, 66]\nclass = 0", fillcolor="#e78d4c"] ;
+8 -> 12 ;
+13 [label="samples = 175\nvalue = [146, 29]\nclass = 0", fillcolor="#ea9a60"] ;
+12 -> 13 ;
+14 [label="samples = 597\nvalue = [560, 37]\nclass = 0", fillcolor="#e78946"] ;
+12 -> 14 ;
+}
