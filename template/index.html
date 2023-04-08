@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Attrition Predictor</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Applicant form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Employee Attrition Predictor</h2>
+                        <form action="/prediction" method="POST" class="register-form" id="register-form">
+                            <h3>Employee Information</h3>
+                            <!-- Age -->
+                            <div class="form-group">
+                                <label for="age"><i class="zmdi zmdi-account material-icons-age"></i></label>
+                                <input type="number" min="0" name="age" placeholder="Employee's Age" required/>
+                            </div>
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label for="gender"><i class="zmdi zmdi-gender"></i></label>
+                                <select name="gender" id="gender" placeholder="Employee's Gender" required>
+                                    <option value="" disabled selected>Employee's Gender</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>        
+                            <!-- Marital Status -->
+                            <div class="form-group">
+                                <label for="marital_status"><i class="zmdi zmdi-marital"></i></label>
+                                <select name="marital_status" id="marital_status" placeholder="Employee's Marital Status" required>
+                                    <option value="" disabled selected>Employee's Marital Status</option>
+                                    <option value="0">Single</option>
+                                    <option value="1">Married</option>
+                                    <option value="2">Divorced</option>
+                                </select>
+                            </div>
+                            <!-- DistanceFromHome -->
+                            <div class="form-group">
+                                <label for="distancefromhome"><i class="zmdi zmdi-distance"></i></label>
+                                <input type="number" min="0" name="distancefromhome" placeholder="Distance from work(miles)" required/>
+                            </div>
+                            <!-- NumCompaniesWorked -->
+                            <div class="form-group">
+                                <label for="numcompaniesworked"><i class="zmdi zmdi-work"></i></label>
+                                <input type="number" min="0" name="numcompaniesworked" placeholder="Number of Companies Previously Worked at" required/>
+                            </div>
+                            <!-- TotalWorkingYears -->
+                            <div class="form-group">
+                                <label for="totalworkingyears"><i class="zmdi zmdi-workyears"></i></label>
+                                <input type="number" min="0" name="totalworkingyears" placeholder="Total Number of Years Working" required/>
+                            </div>
+                            <h3>Employment Details</h3>
+                            <!-- YearsAtCompany -->
+                            <div class="form-group">
+                                <label for="yearsatcompany"><i class="zmdi zmdi-yearscomp"></i></label>
+                                <input type="number" min="0" name="yearsatcompany" placeholder="Years at Company" required/>
+                            </div>
+                            <!-- YearsInCurrentRole -->
+                            <div class="form-group">
+                                <label for="yearsincurrentrole"><i class="zmdi zmdi-yearsrole"></i></label>
+                                <input type="number" min="0" name="yearsincurrentrole" placeholder="Years in Current Role" required/>
+                            </div>
+                            <!-- YearsWithCurrentManager -->
+                            <div class="form-group">
+                                <label for="yearswithcurrentmanager"><i class="zmdi zmdi-yearsmgr"></i></label>
+                                <input type="number" min="0" name="yearswithcurrentmanager" placeholder="Years with Current Manager" required/>
+                            </div>
+                            <!-- Department -->
+                            <div class="form-group">
+                                <label for="department"><i class="zmdi zmdi-department"></i></label>
+                                <select name="department" id="department" placeholder="Department" required>
+                                    <option value="" disabled selected>Department</option>
+                                    <option value="0">Research & Development</option>
+                                    <option value="1">Sales</option>
+                                    <option value="2">Human Resources</option>
+                                </select>
+                            </div>
+                            <!-- Overtime -->
+                            <div class="form-group">
+                                <label for="overtime"><i class="zmdi zmdi-overtime"></i></label>
+                                <select name="overtime" id="overtime" placeholder="Works Overtime" required>
+                                    <option value="" disabled selected>Works Overtime</option>
+                                    <option value="1">No</option>
+                                    <option value="0">Yes</option>
+                                </select>
+                            </div>
+                            <!-- BusinessTravel -->
+                            <div class="form-group">
+                                <label for="businesstravel"><i class="zmdi zmdi-travel"></i></label>
+                                <select name="businesstravel" id="businesstravel" placeholder="Travel frequency" required>
+                                    <option value="" disabled selected>Travel Frequency</option>
+                                    <option value="0">Travel_Rarely</option>
+                                    <option value="1">Travel_Frequently</option>
+                                    <option value="2">Non-Travel</option>
+                                </select>
+                            </div>
+                            <!-- StockOptionLevel -->
+                            <div class="form-group">
+                                <label for="stockoption"><i class="zmdi zmdi-stock"></i></label>
+                                <select name="stockoption" id="stockoption" placeholder="Stock Option Level" required>
+                                    <option value="" disabled selected>Stock Option Level</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <!-- JobLevel -->
+                            <div class="form-group">
+                                <label for="joblevel"><i class="zmdi zmdi-joblevel"></i></label>
+                                <select name="joblevel" id="joblevel" placeholder="Current Job Level" required>
+                                    <option value="" disabled selected>Current Job Level</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="2">4</option>
+                                    <option value="3">5</option>
+                                </select>
+                            </div>
+
+                            <!-- HourlyRate -->
+                            <div class="form-group">
+                                <label for="hourlyrate"><i class="zmdi zmdi-money"></i></label>
+                                <input type="number" min="0" name="hourlyrate" placeholder="Employee's hourly rate (USD)" required/>
+                            </div>
+                            <h3>Employee Sentiment</h3>
+                            <!-- JobInvolvement -->
+                            <div class="form-group">
+                                <label for="jobinvolvement"><i class="zmdi zmdi-jobinvolvement"></i></label>
+                                <select name="jobinvolvement" id="jobinvolvement" placeholder="Current Job Involvement" required>
+                                    <option value="" disabled selected>Current Job Involvement</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="2">4</option>
+                                </select>
+                            </div>
+                            <!-- JobSatisfaction -->
+                            <div class="form-group">
+                                <label for="jobsatisfaction"><i class="zmdi zmdi-jobsatisfaction"></i></label>
+                                <select name="jobsatisfaction" id="jobsatisfaction" placeholder="Current Job Satisfaction" required>
+                                    <option value="" disabled selected>Current Job Satisfaction</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="2">4</option>
+                                </select>
+                            </div>
+                            <!-- EnvironmentalSatisfaction -->
+                            <div class="form-group">
+                                <label for="environmentalsatisfaction"><i class="zmdi zmdi-environmentalsatisfaction"></i></label>
+                                <select name="environmentalsatisfaction" id="environmentalsatisfaction" placeholder="Current Environmental Satisfaction" required>
+                                    <option value="" disabled selected>Current Environmental Satisfaction</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="2">4</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Check Attrition Risk"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="../static/images/signup-image.jpg" alt="sing up image"></figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "data_columns": {
+        "Age": null,
+        "Gender_Female": null,
+        "MaritalStatus_Divorced": null,
+        "MaritalStatus_Married": null,
+        "MaritalStatus_Single": null,
+        "DistanceFromHome": null,
+        "NumCompaniesWorked": null,
+        "TotalWorkingYears": null,
+        "YearsAtCompany": null,
+        "YearsInCurrentRole": null,
+        "YearsWithCurrManager": null,
+        "Department_Human Resources": null,
+        "Department_Research & Development": null,
+        "OverTime_No": null,
+        "BusinessTravel_Non-Travel": null,
+        "BusinessTravel_Travel_Frequently": null,
+        "BusinessTravel_Travel_Rarely": null,
+        "StockOptionLevel": null,
+        "JobLevel": null,
+        "JobInvolvement": null,
+        "HourlyRate": null,
+        "JobSatisfaction": null,
+        "EnvironmentSatisfaction": null
+     }
+}
