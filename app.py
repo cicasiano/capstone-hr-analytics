@@ -123,25 +123,25 @@ def predict():
 		schema_cols['DailyRate'] = float(hourlyrate) * 8
 		schema_cols['Education'] = 3
 		schema_cols['MonthlyRate'] = (float(hourlyrate) * 2080)/12
-		schema_cols['PercentSalaryHike'] = 0.0215
+		schema_cols['PercentSalaryHike'] = 15.18
 		schema_cols['PerformanceRating'] = 3.16
 		schema_cols['RelationshipSatisfaction'] = 2.69
-		schema_cols['TrainingTimesLastYear'] = 7.93
+		schema_cols['TrainingTimesLastYear'] = 2.9
 		schema_cols['WorkLifeBalance'] = 2.76
-		schema_cols['YearsSinceLastPromotion'] = -0.01
-		schema_cols['EducationField_Human Resources'] = 0
-		schema_cols['EducationField_Life Sciences'] = 0
-		schema_cols['EducationField_Marketing'] = 0
-		schema_cols['EducationField_Medical'] = 0
-		schema_cols['EducationField_Other'] = 0
-		schema_cols['EducationField_Technical Degree'] = 0
-		schema_cols['JobRole_Healthcare Representative'] = 0
-		schema_cols['JobRole_Laboratory Technician'] = 0
-		schema_cols['JobRole_Manager'] = 0
-		schema_cols['JobRole_Manufacturing Director'] = 0
-		schema_cols['JobRole_Research Director'] = 0
-		schema_cols['JobRole_Research Scientist'] = 0
-		schema_cols['JobRole_Sales Representative'] = 0
+		schema_cols['YearsSinceLastPromotion'] = 1.8
+		schema_cols['EducationField_Human Resources'] = 0.017
+		schema_cols['EducationField_Life Sciences'] = 0.411
+		schema_cols['EducationField_Marketing'] = 0.099
+		schema_cols['EducationField_Medical'] = 0.098
+		schema_cols['EducationField_Other'] = 0.044
+		schema_cols['EducationField_Technical Degree'] = 0.092
+		schema_cols['JobRole_Healthcare Representative'] = 0.068
+		schema_cols['JobRole_Laboratory Technician'] = 0.180
+		schema_cols['JobRole_Manager'] = 0.065
+		schema_cols['JobRole_Manufacturing Director'] = 0.092
+		schema_cols['JobRole_Research Director'] = 0.051
+		schema_cols['JobRole_Research Scientist'] = 0.245
+		schema_cols['JobRole_Sales Representative'] = 0.051
 
 		# Convert the JSON into data frame
 		df = pd.DataFrame(
@@ -166,11 +166,11 @@ def predict():
        'JobRole_Manager', 'JobRole_Manufacturing Director',
        'JobRole_Research Director', 'JobRole_Research Scientist',
        'JobRole_Sales Representative', 'MaritalStatus_Divorced',
-       'MaritalStatus_Married', 'MaritalStatus_Single', 'OverTime_No']]
+       'MaritalStatus_Married', 'MaritalStatus_Single', 'OverTime_No']].fillna(0)
 
 
 		# Create a prediction
-		print(df.dtypes)
+		print(df.loc[0])
 		result = ValuePredictor(data = df)
 
 		# Determine the output
