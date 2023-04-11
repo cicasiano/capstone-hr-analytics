@@ -13,6 +13,10 @@ import json
 # Utilities
 import sys
 import os
+# SHAP
+import shap
+from shap.plots._force_matplotlib import draw_additive_plot
+import matplotlib.pyplot as plt 
 
 # Current directory
 current_dir = os.path.dirname(__file__)
@@ -24,7 +28,7 @@ app = Flask(__name__, static_folder = 'static', template_folder = 'template')
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
-# Function
+# Functions
 def ValuePredictor(data = pd.DataFrame):
 	# Model name
 	model_name = 'models/rfc_model.pkl'
@@ -35,6 +39,23 @@ def ValuePredictor(data = pd.DataFrame):
 	# Predict the data
 	result = loaded_model.predict(data)
 	return result[0]
+
+def shap_explainer(df):
+    model_name = 'models/rfc_model.pkl'
+    # Directory where the model is stored
+    model_dir = os.path.join(current_dir, model_name)
+    rfc = loaded_model = joblib.load(open(model_dir, 'rb'))
+    rfexplainer = shap.TreeExplainer(rfc)
+    rfshap_values = rfexplainer.shap_values(df)
+    return rfexplainer,rfshap_values
+
+# Function to sort the list by second item of tuple
+def Sort_Tuple(tup): 
+  
+    # reverse = None (Sorts in Ascending order) 
+    # key is set to sort using second element of 
+    # sublist lambda has been used 
+    return(sorted(tup, key = lambda x: x[1]))  
 
 # Home page
 @app.route('/')
@@ -173,19 +194,51 @@ def predict():
 		print(df.loc[0])
 		result = ValuePredictor(data = df)
 
+		# create shap values and force_plot
+		rfexplainer,rfshap_values = shap_explainer(df)
+
+		# https://www.youtube.com/watch?v=Z2kfLs2Dwqw for user interpetability and less cluttered visualization using the top 10 features impacting the prediction
+		shap_user = rfshap_values[1][0,:]
+		shap_importance = np.argsort(shap_user)
+		neg_indexes = [shap_importance[c] for c in range(10)]
+		pos_indexes = [shap_importance[-(c+1)] for c in range(10)]
+
+		main_feats = neg_indexes[:]
+		main_feats.extend(pos_indexes[:])
+
+		feature_names = [list(df.columns)[_] for _ in main_feats]
+		neg_vals = [shap_user[shap_importance[c]] for c in range(10)]
+		pos_vals = [shap_user[shap_importance[-(c+1)]] for c in range(10)]
+
+		main_vals = neg_vals
+		main_vals.extend(pos_vals)
+
+		main_sorted = Sort_Tuple(list(zip(feature_names,main_vals)))
+		main_sorted = [t[0] for t in main_sorted]
+
 		# Determine the output
 		if int(result) == 1:
-			prediction = 'Based on the features provided, this employee is at risk for attrition'
+			prediction = 'Based on the features provided, this employee is at risk of attrition.'
+			features   = main_sorted[-1]+' and '+ main_sorted[-2] + ' are contributing towards this employee leaving.'
 		else:
-			prediction = 'Based on the features provided, this employee is not at risk for attrition'
+			prediction = 'Based on the features provided, this employee is not at risk of attrition.'
+			features   = str(main_sorted[0])+' and '+ str(main_sorted[1] )+ ' are contributing towards this employee staying.'
+		# https://towardsdatascience.com/tutorial-on-displaying-shap-force-plots-in-python-html-4883aeb0ee7c
+		def _force_plot_html(rfexplainer, rfshap_values,main_feats,feature_names):
+			force_plot = shap.force_plot(rfexplainer.expected_value[1],
+			rfshap_values[1][0,main_feats], df[feature_names], feature_names = feature_names, matplotlib=False, link='logit')
+			shap_html = f"<head>{shap.getjs()}</head><body>{force_plot.html()}</body>"
+			return shap_html
+		shap_plots = {}
+		shap_plots[1] = _force_plot_html(rfexplainer, rfshap_values,main_feats,feature_names)
 
 		# Return the prediction
-		return render_template('prediction.html', prediction = prediction)
+		return render_template('prediction.html', prediction = prediction, shap_plots = shap_plots, features = features)
 	
 	# Something error
 	else:
 		# Return error
-		return render_template('error.html', prediction = prediction)
+		return render_template('error.html', prediction = prediction, features = features)
 
 if __name__ == '__main__':
     app.run(debug = True)

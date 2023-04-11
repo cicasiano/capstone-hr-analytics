@@ -21,24 +21,39 @@
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="..\static\images\signin-image.jpg" alt="sign-in up image"></figure>
-                    </div>
-
                     <div class="signin-form">
                         <h2 class="form-title">Prediction</h2>
                         <a>The employee attrition prediction is obtained using the <b>Random Forest Classifier</b> machine learning model. It has the average accuracy of around 86%. To obtain this model performance, we used the available IBM HR Analytics Employee Attrition & Performance Dataset.</a>
                         </br></br>
-                        Attrition: {{ prediction }}
+                        <b>{{ prediction }}</b>
+                        </br>
+                        <a>{{ features }}</a>
+                        </br>
+                        <!-- {% for i in shap_plots: %} -->
+                        <iframe srcdoc="{{shap_plots[1]}}" frameBorder="0"  width="800"></iframe>
+                        <!-- {% endfor %} -->
+                        <a>How do you interpret this?</a>
+                        </br>
+                        <a>Feature values that increase the prediction value are in pink and thier sizes show the magnitude of the feature's effect. Feature values decreasing the prediction are in blue. The base value is the average prediction value of the model trained with the IBM dataset.</a>
                         </br></br>
+                        
+                        <div class="form-group">
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>
+                                <a href="https://github.com/cicasiano/capstone-hr-analytics.git" class="term-service">Check out our GitHub</a>
+                            </label>
                         <div class="form-group">
                             <label for="agree-term" class="label-agree-term"><span><span></span></span>
                                 <a href="{{url_for('home')}}" class="term-service">Back to Home</a>
                             </label>
                         </div>
                     </div>
+                    <!-- <div class="signin-image">
+                        <figure><img src="..\static\images\signin-image.jpg" alt="sign-in up image"></figure>
+                    </div>   -->
                 </div>
+
             </div>
+
         </section>
 
     </div>
