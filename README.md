@@ -21,7 +21,7 @@ SHAP is a major part of this project as it is used to evaluate and relay to end 
 ```
 pip install shap
 ```
-For more information on SHAP, you can read the [documentation] (https://shap.readthedocs.io/en/latest/index.html) for installation and [Interpretable Machine Learning] (https://christophm.github.io/interpretable-ml-book/shapley.html#shapley) by Christoph Molnar for a thorough explaination of shapley/shap values.
+For more information on SHAP, you can read the [documentation](https://shap.readthedocs.io/en/latest/index.html) for installation and [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/shapley.html#shapley) by Christoph Molnar for a thorough explaination of shapley/shap values.
 
 ## Flask Installation
 Also should be taken care of if you used the `requirements.txt`. Flask is a lightweight WSGI web application framework we utilized to build our predictor app.
@@ -29,7 +29,7 @@ Also should be taken care of if you used the `requirements.txt`. Flask is a ligh
 ```
 pip install Flask
 ```
-For a more installation details you can read the installation [document](https://flask.palletsprojects.com/en/2.2.x/installation/#install-flask).
+For more installation details you can read the installation [document](https://flask.palletsprojects.com/en/2.2.x/installation/#install-flask).
 
 ## AWS Container Services
 We utilized AWS services to deploy our application. Other services are available but if this is your first time using AWS services we recommend this git repo for deploying a Flask Docker Image to an AWS container service.
@@ -39,7 +39,7 @@ https://github.com/vastevenson/docker-flask-demo-aws-ecs-and-ecr.git
 You will need to have [Docker](https://docs.docker.com/get-docker/) and [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
 
 ### Run locally
-Once you have the repo cloned and requirements installed, navigate to the root directory and start it up locally.
+If you just want to run locally, once you have the repo cloned and requirements installed, navigate to the root directory and start it up locally.
 
 ```
 flask --app app run
@@ -52,7 +52,7 @@ flask --app app run --debugger
 Then go to [http://localhost:5000/]([http://localhost:5000/]) to see the app! 
 
 ## Attrition Pedictor Web App
-Feel free to take a look at our already host web app.
+Feel free to take a look at our deployed web app.
 
 [Employee Attrition Predictor](http://54.196.189.236:5000/)
 
