@@ -54,7 +54,7 @@ Then go to [http://localhost:5000/]([http://localhost:5000/]) to see the app!
 ## Attrition Pedictor Web App
 Feel free to take a look at our deployed web app.
 
-[Employee Attrition Predictor](http://54.196.189.236:5000/)
+[Employee Attrition Predictor](http://3.236.253.19:5000/)
 
 ## End to End ML Model Deployment
 Below is a helper visual to get an idea of the development and deployment of our ML model.
