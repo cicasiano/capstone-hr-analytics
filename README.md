@@ -58,4 +58,4 @@ Feel free to take a look at our already host web app.
 
 ## End to End ML Model Deployment
 Below is a helper visual to get an idea of the development and deployment of our ML model.
-![end to end ML](https://github.com/cicasiano/capstone-hr-analytics/end-to-end-ml.png?raw=true)
+![end to end ML](https://github.com/cicasiano/capstone-hr-analytics/blob/3b20cb0b601359afa36920af3bebffb06049edbf/end-to-end-ml.png?raw=true)
